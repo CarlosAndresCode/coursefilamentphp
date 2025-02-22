@@ -23,7 +23,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationLabel = 'Employees';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {
@@ -35,7 +35,7 @@ class UserResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')->required(),
                         Forms\Components\TextInput::make('email')->email()->required(),
-                        Forms\Components\TextInput::make('password')->password()->required(),
+                        Forms\Components\TextInput::make('password')->password()->required()->hiddenOn('edit'),
                     ]),
                 Section::make('Address Information')
                     ->description('Enter the address information of the employee.')
@@ -58,6 +58,7 @@ class UserResource extends Resource
                                         ->pluck('name', 'id'))
                             ->searchable()
                             ->preload()
+                            ->live()
                             ->afterStateUpdated(function (Set $set){
                                 $set('city_id', null);
                             })
@@ -84,9 +85,9 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('postal_code'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

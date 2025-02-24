@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CountryResource extends Resource
 {
     protected static ?string $model = Country::class;
-    protected static ?string $navigationIcon = 'heroicon-o-flag';
-
-    protected static ?string $navigationGroup = 'Localization Management';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-americas';
+    protected static ?string $navigationGroup = 'System Management';
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
@@ -65,55 +65,58 @@ class CountryResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('iso2')
+                    ->label('ISO2')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('iso3')
+                    ->label('ISO3')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('numeric_code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phonecode')
+                    ->label('Phone Code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('capital')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('currency')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('currency_name')
-                    ->searchable(),
+//                Tables\Columns\TextColumn::make('currency_name')
+//                    ->searchable(),
                 Tables\Columns\TextColumn::make('currency_symbol')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('tld')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('native')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('region')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('subregion')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('latitude')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('longitude')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('emoji')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('emojiU')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('flag')
-                    ->boolean(),
+//                Tables\Columns\TextColumn::make('tld')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('native')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('region')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('subregion')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('latitude')
+//                    ->numeric()
+//                    ->sortable(),
+//                Tables\Columns\TextColumn::make('longitude')
+//                    ->numeric()
+//                    ->sortable(),
+                Tables\Columns\TextColumn::make('emoji'),
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('emojiU')
+//                    ->searchable(),
+//                Tables\Columns\IconColumn::make('flag')
+//                    ->boolean(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+//                Tables\Columns\TextColumn::make('created_at')
+//                    ->dateTime()
+//                    ->sortable()
+//                    ->toggleable(isToggledHiddenByDefault: true),
+//                Tables\Columns\TextColumn::make('updated_at')
+//                    ->dateTime()
+//                    ->sortable()
+//                    ->toggleable(isToggledHiddenByDefault: true),
+//                Tables\Columns\TextColumn::make('deleted_at')
+//                    ->dateTime()
+//                    ->sortable()
+//                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
